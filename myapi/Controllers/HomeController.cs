@@ -9,7 +9,7 @@ using myapi.DAL;
 
 namespace myapi.Controllers
 {
-    [ApiController] 
+    [ApiController]
     public class HomeController : ControllerBase
     {
         private readonly IRepository _context;
@@ -32,24 +32,31 @@ namespace myapi.Controllers
             {
                 return BadRequest();
             }
-            
+
         }
 
-        [HttpGet ("api/database")]
+        [HttpGet("api/database")]
         public IActionResult WriteToDatabase()
         {
             try
             {
-                _context.WriteToDb();
-                var result = _context.ReadFromDb();
-                return Ok(result.Text + " is written to the database.");
+                var saved = _context.WriteToDb();
+
+                if (saved == 1)
+                {
+                    return Ok("Hello World is written to the database.");
+                }
+                else
+                {
+                    return BadRequest();
+                }
 
             }
             catch
             {
                 return BadRequest();
             }
-            
+
         }
     }
 }
