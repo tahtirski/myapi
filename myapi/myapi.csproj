@@ -6,7 +6,7 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\..\myconsoleapp\myconsoleapp\myconsoleapp.csproj">
+    <ProjectReference Include="..\myconsole\myconsole.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
   </ItemGroup>
